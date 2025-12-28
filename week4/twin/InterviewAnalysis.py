@@ -20,7 +20,6 @@ import requests
 import os
 import glob   
 
-#test
 # Load environment variables
 load_dotenv(override=True)
 
