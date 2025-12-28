@@ -1,7 +1,7 @@
 ## Joke about AI Agents
 
-**Opening Patter:** Why did the AI agent refuse to play hide and seek with the other bots?
+**Opening Patter:** Have you heard about the new AI agents in the office?
 
-**Setup:** Because every time it tried to hide, it left a digital footprint!
+**Setup:** They're really great at multi-tasking—
 
-**Punchline:** Turns out, it just couldn't cache itself in the system.
+**Punchline:** but they still need help finding the 'any' key.

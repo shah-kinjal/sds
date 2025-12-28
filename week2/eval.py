@@ -1,18 +1,19 @@
 import sys
 import math
 import asyncio
+from time import sleep
 from pydantic import BaseModel, Field
 from litellm import acompletion
 from dotenv import load_dotenv
 
 from test import TestQuestion, load_tests
-from answer2 import answer_question, fetch_context
+from answer import answer_question, fetch_context
 
 load_dotenv(override=True)
 
 MODEL = "gpt-4.1-nano"
 db_name = "vector_db"
-BATCH_SIZE = 1
+BATCH_SIZE = 5
 
 
 class RetrievalEval(BaseModel):
@@ -184,9 +185,10 @@ async def evaluate_all_answers():
     """Evaluate all answers to tests using batched async execution."""
     tests = load_tests("tests.jsonl")
     total_tests = len(tests)
-
+    
     # Process tests in batches of BATCH_SIZE
     for batch_start in range(0, total_tests, BATCH_SIZE):
+        
         batch_end = min(batch_start + BATCH_SIZE, total_tests)
         batch_tests = tests[batch_start:batch_end]
 
@@ -199,6 +201,8 @@ async def evaluate_all_answers():
             test = batch_tests[i]
             progress = (batch_start + i + 1) / total_tests
             yield test, result, progress
+    
+
 
 
 async def run_cli_evaluation(test_number: int):
